@@ -1,0 +1,8 @@
+.booking {
+    min-height: 80vh;
+    padding: 21px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 21px;
+}

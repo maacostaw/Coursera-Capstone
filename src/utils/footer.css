@@ -1,0 +1,53 @@
+footer {
+    background-color: black;
+}
+
+/*Footer Section*/
+footer .footerC {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    max-width: 991px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+    footer .footerC {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+    }
+}
+
+footer .footerC>div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 14px;
+}
+
+@media (min-width: 992px) {
+    footer .footerC>div {
+        width: 25%;
+    }
+}
+
+footer .footerC>div>p:nth-child(1) {
+    padding-bottom: 7px;
+    font-weight: bold;
+}
+
+footer .footerC>div:nth-child(2n)>p:nth-child(n+2):hover {
+    cursor: pointer;
+}
+
+footer .footerImageC {
+    background-image: url("/public/Asset 20@4x.png");
+    width: 85px;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

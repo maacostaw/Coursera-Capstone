@@ -1,0 +1,87 @@
+/*Navigation section: nav selector*/
+nav .navC {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 991px;
+}
+
+nav .navMainBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav .navImageC {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
+}
+@media (min-width: 992px) {
+  nav .navImageC {
+    width: min-content;
+  }
+}
+
+nav .navItemsMobileC {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 2s ease-in;
+}
+
+@media (min-width: 992px) {
+
+  /*Dejo esta regla por consistencia verdadera la lógica para hacer 
+     aparecer/desaparecer este menú está en el Nav.jsx*/
+  nav .navItemsMobileC {
+    display: none;
+  }
+}
+
+nav .navItemsDesktopC {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 21px;
+}
+
+@media (min-width: 992px) {
+  nav .navItemsDesktopC {
+    display: flex;
+  }
+}
+
+nav .navIconC {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  nav .navIconC {
+    display: none;
+  }
+}
+
+nav img {
+  width: 200px;
+}
+
+nav .item {
+  font-size: 20px;
+  font-family: "karla", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+nav .item:hover {
+  color: #495E57;
+}

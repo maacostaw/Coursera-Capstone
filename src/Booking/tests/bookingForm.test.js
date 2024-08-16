@@ -23,6 +23,6 @@ test('Verify submit works', () => {
 
     fireEvent.click(btn);
     
-    expect(global.window.location.pathname).toContain('/new-url');
+    expect(global.window.location.pathname).toContain('/confirmedBooking');
 
 })

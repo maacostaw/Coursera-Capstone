@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import "./bookingForm.css";
 import { TYPES } from "../Booking";
 
+const dateToDateInputValue = (date) => {
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    return date.toJSON().slice(0, 10);
+}
+
 const BookingForm = ({ availableTimes, date, setDate, setFormResult, dispatchAvailableTimes }) => {
 
     const availableOccasions = [
@@ -29,10 +34,9 @@ const BookingForm = ({ availableTimes, date, setDate, setFormResult, dispatchAva
         }
     }, [guests])
 
-    useEffect(() => {
-        const dates = window['fetchAPI'](new Date(date))
-        dispatchAvailableTimes({ type: TYPES.REPLACE_LIST_ITEMS, list: dates })
-    }, [date]);
+    const startDate = new Date();
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
 
     return (
         <div className="booking">
@@ -41,6 +45,8 @@ const BookingForm = ({ availableTimes, date, setDate, setFormResult, dispatchAva
                 <label htmlFor="res-date">Choose date</label>
                 <input
                     value={date}
+                    min={dateToDateInputValue(startDate)}
+                    max={dateToDateInputValue(endDate)}
                     type="date" id="res-date"
                     onChange={(e) => setDate(e.target.value)}
                 />
@@ -64,7 +70,7 @@ const BookingForm = ({ availableTimes, date, setDate, setFormResult, dispatchAva
                 />
                 <span>
                     {guestsError &&
-                        <p>Number of guests is mandatory and must be greater or equal to 1 </p>
+                        <p style={{color:"red"}}>Number of guests is mandatory and must be greater or equal to 1 </p>
                     }
                 </span>
                 <label htmlFor="occasion">Occasion</label>

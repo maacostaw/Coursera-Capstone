@@ -17,6 +17,34 @@ export const TYPES = {
 
 const Booking = () => {  
 
+    /*Wasn't possible to call this from script*/
+    const seededRandom = (seed) => {
+        var m = 2 ** 35 - 31;
+        var a = 185852;
+        var s = seed % m;
+        return function () {
+          return (s = s * a % m) / m;
+        };
+      }
+    
+      const fetchAPI = (date) => {
+        let result = [];
+        let random = seededRandom(date.getDate());
+    
+        for (let i = 17; i <= 23; i++) {
+          if (random() < 0.5) {
+            result.push(i + ':00');
+          }
+          if (random() < 0.5) {
+            result.push(i + ':30');
+          }
+        }
+        return result;
+      };
+      const submitAPI = (formData) => {
+        return true;
+      };
+
     const navigate = useNavigate();
 
     const updateTimes = (state, actions) => {
@@ -36,7 +64,7 @@ const Booking = () => {
     const [availableTimes, dispatchAvailableTimes] = useReducer(updateTimes, initialAvailableTimes);
 
     useEffect(() => {
-        const dates = window['fetchAPI'](new Date(date))
+        const dates = fetchAPI(new Date(date))
         dispatchAvailableTimes({type: TYPES.REPLACE_LIST_ITEMS, list:dates})
     }, [date]);
 
@@ -44,7 +72,7 @@ const Booking = () => {
 
     useEffect(()=>{
         if(formResult != null){
-            if(window['submitAPI'](formResult)){
+            if(submitAPI(formResult)){
                 navigate("/confirmedBooking");
             }
         }

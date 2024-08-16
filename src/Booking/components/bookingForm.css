@@ -4,7 +4,11 @@
     align-items: start;
 }
 
-.booking form>*:nth-child(2n) {
+.booking form>*:nth-child(3n) {
     margin-bottom: 21px;
     width: 325px;
+}
+
+.booking form>* {
+    width: 100%;
 }

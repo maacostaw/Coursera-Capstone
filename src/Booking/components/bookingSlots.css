@@ -1,0 +1,20 @@
+.bookingSlots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.bookingSlots>*:nth-child(1) {
+    width: 100%;
+    text-align: center;
+}
+
+.bookingSlots .bookingSlot{
+    width: 200px;
+    text-align: center;
+    padding: 7px 14px;
+    background-color: #495E57;
+    color: white;
+}

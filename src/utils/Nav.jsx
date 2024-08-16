@@ -4,17 +4,6 @@ import useWindowSize from "../hooks/useWindowSize";
 import './nav.css';
 import { useNavigate } from "react-router-dom";
 
-const Headers = () => {
-    return (
-        <>
-            <meta name="description" content="your text goes here" />
-            <meta name="og:title" content="" />
-            <meta name="og:description" content="" />
-            <meta name="og:image" content="" />
-        </>
-    )
-}
-
 const NavItems = () => {
     return (
         <>
@@ -47,35 +36,31 @@ const Nav = () => {
     }, [windowSize]);
 
     return (
-        <>
-            <Headers />
-            <nav>
-                <div className="navC">
-                    <div className="navMainBar">
-                        <div className="navImageC">
-                            <img
-                                onClick={() => navigate("/")}
-                                alt="logo"
-                                src="/Asset 16@4x.png"
-                            />
-                        </div>
-                        <div className="navItemsDesktopC">
-                            <NavItems />
-                        </div>
-                        <div className="navIconC">
-                            <MenuIcon onClick={() => toggleVisibleNav()} />
-                        </div>
+        <nav>
+            <div className="navC">
+                <div className="navMainBar">
+                    <div className="navImageC">
+                        <img
+                            onClick={() => navigate("/")}
+                            alt="logo"
+                            src="/Asset 16@4x.png"
+                        />
                     </div>
-                    <div
-                        className="navItemsMobileC"
-                        style={{ "maxHeight": visibleNav ? "unset" : "0" }}
-                    >
+                    <div className="navItemsDesktopC">
                         <NavItems />
                     </div>
+                    <div className="navIconC">
+                        <MenuIcon onClick={() => toggleVisibleNav()} />
+                    </div>
                 </div>
-
-            </nav>
-        </>
+                <div
+                    className="navItemsMobileC"
+                    style={{ "maxHeight": visibleNav ? "unset" : "0" }}
+                >
+                    <NavItems />
+                </div>
+            </div>
+        </nav>
 
     )
 };
